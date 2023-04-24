@@ -1,0 +1,52 @@
+<div>
+  <header class="bg-success">
+    <h2 class="ms-5">Header</h2>
+
+  </header>
+  <div class=" d-flex" style="width: 100%;">
+    <div class=" bg-primary pt-3 ps-3" style="width: 20%;">
+      <label for="City Name">City Name</label> <br>
+      <input [(ngModel)]="city" type="text" readonly> <br>
+      <label for="Lat">Latitude</label> <br>
+      <input [(ngModel)]="latitude" type="text" readonly> <br>
+      <label for="Lng">Longitude</label> <br>
+      <input [(ngModel)]="longitude" type="text" readonly> <br>
+
+      <div class="m-3">
+        <button class="btn btn-success" (click)="showDialoug()" icon="pi pi-info-tick"> New LatLng </button>
+      </div>
+
+
+    </div>
+    <div class=" bg-info" style="width: 80%;">
+      <div class="card m-4">
+        <div class="map-container">
+          <mgl-map [style]="'mapbox://styles/mapbox/streets-v11'" [zoom]=[zoom] [center]="[longitude, latitude]" class="map"></mgl-map>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <p-dialog header="Details Lat & Lng" [(visible)]="displayDialog">
+      <form action="" [formGroup]="infoForm" (ngSubmit)="submitValues()">
+        <label for="city"> City Name </label>
+        <input type="text" class="form-control" placeholder="enter City name" formControlName="city" >
+        <div>
+          <label for="city"> Latitude : </label>
+          <input type="number" class="form-control" placeholder="enter Latitude" formControlName="lat">
+        </div>
+        <div>
+          <label for="city">Longitude : </label>
+          <input type="number" class="form-control" placeholder="enter Longitude" formControlName="lng">
+        </div>
+        <div class="text-center m-3">
+          <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+      </form>
+    </p-dialog>
+  </div>
+
+</div>
+
